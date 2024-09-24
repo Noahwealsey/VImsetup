@@ -1,0 +1,46 @@
+set nocompatible
+filetype on
+filetype plugin on 
+filetype indent on 
+syntax on
+set relativenumber
+set tabstop=4
+set incsearch
+set ignorecase
+set showcmd
+set hlsearch
+set wildmenu
+set wildmode=list:longest
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+set backspace=indent,eol,start
+set laststatus=2
+
+noremap <C-n> :NERDTreeToggle
+noremap <C-b> :Files
+
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
+
+" List your plugins here (examples):
+Plug 'preservim/nerdtree'       " File tree explorer
+Plug 'itchyny/lightline.vim'    " Lightweight status line
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'dense-analysis/ale'
+Plug 'tpope/vim-fugitive'
+Plug 'git@github.com:airblade/vim-gitgutter.git'
+Plug 'stevearc/oil.nvim'
+
+" Initialize plugin system
+call plug#end()
+
+let g:lightline = {
+	\ 'colorscheme': 'wombat',
+	\ 'active': {
+	\   'left': [ ['mode', 'paste'], ['gitbranch', 'readonly', 'filename', 'modified'] ],
+	\   'right': [ ['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
+    \ },
+	\ 'component_function': {
+	\   'gitbranch': 'FugitiveHead',
+	\ },
+	\ }
